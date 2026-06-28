@@ -224,9 +224,23 @@ export async function submitForReview(): Promise<SaveState> {
     };
   }
 
+  // Always (re)publish. Only request verification from a not-yet-reviewed state —
+  // a verified or already-pending profile keeps its status (the DB guard forbids
+  // a non-admin from changing it, and we don't want to un-verify on a re-edit).
+  const update: {
+    status: "live";
+    verification_status?: "pending";
+  } = { status: "live" };
+  if (
+    profile.verification_status === "unverified" ||
+    profile.verification_status === "rejected"
+  ) {
+    update.verification_status = "pending";
+  }
+
   const { error } = await supabase
     .from("athlete_profiles")
-    .update({ status: "live", verification_status: "pending" })
+    .update(update)
     .eq("id", profile.id);
   if (error) return { error: error.message };
 

@@ -12,7 +12,13 @@ import { StepFooter } from "@/components/onboarding/step-footer";
 import { Input } from "@/components/ui/input";
 import { Alert } from "@/components/ui/alert";
 
-export function ContactForm({ initial }: { initial: ContactInput }) {
+export function ContactForm({
+  initial,
+  alreadyLive,
+}: {
+  initial: ContactInput;
+  alreadyLive: boolean;
+}) {
   const [serverError, setServerError] = useState<string>();
   const [pending, setPending] = useState(false);
   const { register, control, handleSubmit, formState } = useForm<
@@ -76,8 +82,9 @@ export function ContactForm({ initial }: { initial: ContactInput }) {
       </Field>
 
       <div className="rounded-lg border border-border bg-surface p-4 text-sm text-muted">
-        Submitting publishes your profile and sends it to MatLink for
-        verification. You can keep editing afterward.
+        {alreadyLive
+          ? "Your profile is live. Saving publishes your changes — your verification status stays as it is."
+          : "Submitting publishes your profile and sends it to MatLink for verification. You can keep editing afterward."}
       </div>
 
       {serverError && <Alert>{serverError}</Alert>}
@@ -85,7 +92,7 @@ export function ContactForm({ initial }: { initial: ContactInput }) {
       <StepFooter
         status={status}
         backHref="/onboarding/references"
-        continueLabel="Submit for review"
+        continueLabel={alreadyLive ? "Save changes" : "Submit for review"}
         pending={pending}
       />
     </form>

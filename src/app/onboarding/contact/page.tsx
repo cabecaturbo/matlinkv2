@@ -13,6 +13,7 @@ export default async function Page() {
           Contact &amp; submit
         </h1>
         <ContactForm
+          alreadyLive={b.profile.status !== "draft"}
           initial={{
             whatsapp_e164: b.contact?.whatsapp_e164 ?? "",
             public_email: b.contact?.public_email ?? "",
