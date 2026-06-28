@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+/*
+  MatLink design system — Shoyoroll × Albino & Preto.
+  Monochrome core + ONE accent (volt). Craft rules per docs/matlink-spacing-and-craft-spec.md
+  and docs/matlink-enterprise-design-addendum.md:
+    • TINTED neutrals — one cool undertone everywhere, never pure #fff/#000/#888.
+    • Crisp radius (2–6px) — sharp reads editorial/premium here.
+    • Hairline borders (white ~8% on dark) preferred over shadows.
+    • Negative tracking on display, positive on caps labels; tabular numerals for data.
+*/
+
+:root {
+  /* monochrome core — faint COOL undertone (dark = default) */
+  --background: #0a0b0d;
+  --surface: #101217;
+  --surface-2: #171a20;
+  --foreground: #f2f4f7;
+  --muted: #98a1ad;
+  --muted-foreground: #69717d;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* the single accent */
+  --accent: #ccff00;
+  --accent-foreground: #0a0b0d;
+
+  /* semantic — muted, functional, never competing with the accent */
+  --success: #5fd38a;
+  --warning: #f5c451;
+  --danger: #f7766d;
+  --info: #6aa6f5;
+
+  /* belt colors — the one sanctioned multi-color data element */
+  --belt-white: #e6e7ea;
+  --belt-blue: #2f6fed;
+  --belt-purple: #7c4ddb;
+  --belt-brown: #8a5a2b;
+  --belt-black: #14161a;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Opt-in light theme — cool tint, never pure white. */
+.light {
+  --background: #f7f8fa;
+  --surface: #fcfdfe;
+  --surface-2: #eef1f5;
+  --foreground: #0d1117;
+  --muted: #5a626d;
+  --muted-foreground: #78818d;
+  --border: rgba(13, 17, 23, 0.1);
+  --border-strong: rgba(13, 17, 23, 0.18);
+  --accent: #b6e400;
+  --accent-foreground: #0a0b0d;
+  --success: #16a34a;
+  --warning: #b45309;
+  --danger: #dc2626;
+  --info: #2563eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-belt-white: var(--belt-white);
+  --color-belt-blue: var(--belt-blue);
+  --color-belt-purple: var(--belt-purple);
+  --color-belt-brown: var(--belt-brown);
+  --color-belt-black: var(--belt-black);
+
+  /* crisp radius scale (shrinks rounded-md/lg/xl globally) */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 5px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Display type: tight tracking is the editorial signature. */
+  .font-display {
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+  /* Visible, crafted, consistent keyboard focus. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Spec-sheet eyebrow / caps label — mono, wide tracking (the signature treatment). */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  color: var(--muted);
+}
+
+/* Tabular figures for any aligned data (spec §3). */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
