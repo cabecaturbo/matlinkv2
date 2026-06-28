@@ -86,6 +86,12 @@ export function AthleteCard({ profile }: { profile: CardProfile }) {
           )}
         </div>
 
+        {profile.roles.length > 0 && (
+          <p className="mt-2 truncate text-xs text-muted">
+            {profile.roles.join(" · ")}
+          </p>
+        )}
+
         {topResult && (
           <div className="mt-4 border-t border-border pt-3">
             <p className="eyebrow">Top result</p>

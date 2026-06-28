@@ -59,6 +59,7 @@ export const recordSchema = z.object({
 export const offerSchema = z.object({
   headline: z.string().trim().max(160).optional().or(z.literal("")),
   bio: optionalText,
+  roles: tagList(),
   coaching_focus: tagList(),
   open_to_relocation: z.boolean().default(false),
   relocation_regions: tagList(),

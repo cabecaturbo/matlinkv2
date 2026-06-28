@@ -4,6 +4,7 @@ export type Filters = {
   verified: boolean;
   belt: string[];
   country: string;
+  roles: string[];
   focus: string[];
   region: string[];
   lang: string[];
@@ -20,6 +21,7 @@ export function buildQuery(f: Filters): string {
   if (f.verified) p.set("verified", "1");
   if (f.belt.length) p.set("belt", f.belt.join(","));
   if (f.country) p.set("country", f.country);
+  if (f.roles.length) p.set("roles", f.roles.join(","));
   if (f.focus.length) p.set("focus", f.focus.join(","));
   if (f.region.length) p.set("region", f.region.join(","));
   if (f.lang.length) p.set("lang", f.lang.join(","));
@@ -33,6 +35,7 @@ export function buildQuery(f: Filters): string {
 export function activeFilterCount(f: Filters): number {
   return (
     f.belt.length +
+    f.roles.length +
     f.focus.length +
     f.region.length +
     f.lang.length +

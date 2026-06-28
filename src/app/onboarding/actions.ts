@@ -105,6 +105,7 @@ export async function saveOffer(input: unknown): Promise<SaveState> {
     .update({
       headline: nn(d.headline),
       bio: nn(d.bio),
+      roles: d.roles,
       coaching_focus: d.coaching_focus,
       open_to_relocation: d.open_to_relocation,
       relocation_regions: d.open_to_relocation ? d.relocation_regions : [],

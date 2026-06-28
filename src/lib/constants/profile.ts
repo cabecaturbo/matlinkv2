@@ -26,6 +26,13 @@ export const COACHING_FOCUS = [
   "Gi", "No-Gi", "Competition team", "Fundamentals", "Kids", "MMA grappling", "Private lessons",
 ] as const;
 
+// Roles/positions a person is open to — beyond coaching, the staff/creative
+// roles a gym hires for.
+export const ROLE_TYPES = [
+  "Head coach", "Assistant coach", "Private lessons coach", "Kids program coach",
+  "Front desk manager", "Sales", "Marketing", "Social media", "Videographer", "Photographer",
+] as const;
+
 export const AVAILABILITY = [
   "Full-time", "Part-time", "Seminars", "Short camps",
 ] as const;

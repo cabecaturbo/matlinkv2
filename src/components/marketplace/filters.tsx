@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { COUNTRIES } from "@/lib/constants/countries";
 import {
   BELTS,
+  ROLE_TYPES,
   COACHING_FOCUS,
   LANGUAGES,
   AVAILABILITY,
@@ -269,6 +270,14 @@ export function FilterPanel({
         </div>
       </FacetSection>
 
+      <FacetSection title="Roles">
+        <ChipRow
+          options={ROLE_TYPES}
+          value={current.roles}
+          onToggle={(v) => apply({ roles: toggle(current.roles, v) })}
+        />
+      </FacetSection>
+
       <FacetSection title="Coaching focus">
         <ChipRow
           options={COACHING_FOCUS}
@@ -299,6 +308,9 @@ export function AppliedChips({ current }: { current: Filters }) {
     chips.push({ key: "vi", label: "Needs visa", onRemove: () => apply({ visa: false }) });
   if (current.country)
     chips.push({ key: "c", label: current.country, onRemove: () => apply({ country: "" }) });
+  current.roles.forEach((r) =>
+    chips.push({ key: `ro-${r}`, label: r, onRemove: () => apply({ roles: current.roles.filter((x) => x !== r) }) }),
+  );
   current.region.forEach((r) =>
     chips.push({ key: `rg-${r}`, label: r, onRemove: () => apply({ region: current.region.filter((x) => x !== r) }) }),
   );

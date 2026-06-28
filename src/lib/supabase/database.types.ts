@@ -102,6 +102,7 @@ export type Database = {
           rate_note: string | null
           rejection_reason: string | null
           relocation_regions: string[]
+          roles: string[]
           status: Database["public"]["Enums"]["profile_status"]
           updated_at: string
           user_id: string
@@ -139,6 +140,7 @@ export type Database = {
           rate_note?: string | null
           rejection_reason?: string | null
           relocation_regions?: string[]
+          roles?: string[]
           status?: Database["public"]["Enums"]["profile_status"]
           updated_at?: string
           user_id: string
@@ -176,6 +178,7 @@ export type Database = {
           rate_note?: string | null
           rejection_reason?: string | null
           relocation_regions?: string[]
+          roles?: string[]
           status?: Database["public"]["Enums"]["profile_status"]
           updated_at?: string
           user_id?: string

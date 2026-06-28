@@ -16,6 +16,7 @@ import { ChipGroup } from "@/components/ui/chip-group";
 import { Toggle } from "@/components/ui/toggle";
 import { Alert } from "@/components/ui/alert";
 import {
+  ROLE_TYPES,
   COACHING_FOCUS,
   AVAILABILITY,
   RELOCATION_REGIONS,
@@ -67,6 +68,23 @@ export function OfferForm({ initial }: { initial: OfferInput }) {
           rows={5}
           {...register("bio")}
           placeholder="Your coaching philosophy, experience, what you bring to a gym…"
+        />
+      </Field>
+
+      <Field
+        label="Roles open to"
+        hint="Positions you'd take on at a gym — coaching and beyond."
+      >
+        <Controller
+          control={control}
+          name="roles"
+          render={({ field }) => (
+            <ChipGroup
+              options={ROLE_TYPES}
+              value={field.value ?? []}
+              onChange={field.onChange}
+            />
+          )}
         />
       </Field>
 

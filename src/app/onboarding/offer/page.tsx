@@ -16,6 +16,7 @@ export default async function Page() {
           initial={{
             headline: b.profile.headline ?? "",
             bio: b.profile.bio ?? "",
+            roles: b.profile.roles ?? [],
             coaching_focus: b.profile.coaching_focus ?? [],
             open_to_relocation: b.profile.open_to_relocation ?? false,
             relocation_regions: b.profile.relocation_regions ?? [],

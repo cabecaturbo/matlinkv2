@@ -155,6 +155,21 @@ export default async function AthleteProfilePage({
               </Section>
             )}
 
+            {profile.roles.length > 0 && (
+              <Section title="Roles open to">
+                <div className="flex flex-wrap gap-2">
+                  {profile.roles.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-sm border border-border bg-surface px-3 py-1 text-sm text-foreground"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Section>
+            )}
+
             {profile.coaching_focus.length > 0 && (
               <Section title="Coaching focus">
                 <div className="flex flex-wrap gap-2">

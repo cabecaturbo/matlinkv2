@@ -30,6 +30,7 @@ export default async function MarketplacePage({
     verified: get("verified") === "1",
     belt: csv(get("belt")).filter((b) => BELT_VALUES.includes(b)),
     country: get("country"),
+    roles: csv(get("roles")),
     focus: csv(get("focus")),
     region: csv(get("region")),
     lang: csv(get("lang")),
@@ -49,6 +50,7 @@ export default async function MarketplacePage({
   if (filters.verified) query = query.eq("verification_status", "verified");
   if (filters.belt.length) query = query.in("belt", filters.belt as Belt[]);
   if (filters.country) query = query.eq("location_country", filters.country);
+  if (filters.roles.length) query = query.overlaps("roles", filters.roles);
   if (filters.focus.length) query = query.overlaps("coaching_focus", filters.focus);
   if (filters.region.length) query = query.overlaps("relocation_regions", filters.region);
   if (filters.lang.length) query = query.overlaps("languages", filters.lang);

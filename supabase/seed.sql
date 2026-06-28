@@ -49,3 +49,17 @@ select private.seed_athlete('amira@seed.matlink.dev','Amira Haddad','United Arab
 select private.seed_athlete('thiago@seed.matlink.dev','Thiago Souza','Brazil','Brazil','Sao Paulo','black',1,13,'PSLPB Cicero Costha','Cicero Costha','177654',array['Competition team','No-Gi','Gi'],array['Portuguese','English'],array['Full-time'],array['Europe','North America'],true,true,'verified','Black belt competition coach open to relocating','Forged in one of the toughest competition camps in Brazil.','+5511993334444','IBJJF No-Gi Worlds','Black / Médio',2022,'Bronze');
 
 drop function private.seed_athlete(text,text,text,text,text,public.belt_rank,int,int,text,text,text,text[],text[],text[],text[],boolean,boolean,public.verification_status,text,text,text,text,text,int,text);
+
+-- Role/position types per coach (added in migration 0004).
+update public.athlete_profiles p set roles = v.roles
+from (values
+  ('bruno@seed.matlink.dev',   array['Head coach','Assistant coach']),
+  ('lucas@seed.matlink.dev',   array['Head coach','Social media']),
+  ('mateus@seed.matlink.dev',  array['Kids program coach','Front desk manager']),
+  ('sofia@seed.matlink.dev',   array['Private lessons coach','Kids program coach','Social media']),
+  ('diego@seed.matlink.dev',   array['Head coach','Sales']),
+  ('hiroshi@seed.matlink.dev', array['Head coach','Videographer']),
+  ('amira@seed.matlink.dev',   array['Kids program coach','Photographer','Social media']),
+  ('thiago@seed.matlink.dev',  array['Head coach','Marketing'])
+) as v(email, roles)
+where p.user_id = (select id from public.users u where u.email = v.email);
