@@ -8,6 +8,50 @@
 Mobile-first **PWA** built with Next.js + Supabase. Monochrome, type-led design
 (Shoyoroll × Albino & Preto) with a single volt-green accent.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fcabecaturbo%2Fmatlinkv2&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY&envDescription=Supabase%20project%20URL%20and%20publishable%20key%20(values%20in%20the%20README%20Quick%20start)&project-name=matlink&repository-name=matlink)
+
+---
+
+## Quick start (try it in 2 minutes)
+
+Run it against the **already-seeded demo backend** — no Supabase setup needed.
+
+```bash
+git clone https://github.com/cabecaturbo/matlinkv2.git
+cd matlinkv2
+npm install
+```
+
+Create a `.env.local` in the project root:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=https://slcmedsufrxnmijzhnlo.supabase.co
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable__onteu6UMJTeUJk4vjCCZw_6f8ZHuhV
+```
+
+These are *public* browser keys (RLS protects all data). Then:
+
+```bash
+npm run dev    # http://localhost:3000
+```
+
+**Demo logins** (password `Passw0rd!23`) — use these instead of fresh signup
+(new accounts require email confirmation):
+
+| Role | Email |
+|------|-------|
+| Athlete | `athlete1@matlink.dev` |
+| Gym | `gym1@matlink.dev` |
+| Admin | `admin1@matlink.dev` |
+
+Browse the marketplace without signing in; sign in as a gym to reveal WhatsApp
+contact; as the athlete to edit the profile wizard; as admin for the
+verification queue at `/admin`.
+
+**Deploy your own:** click **Deploy with Vercel** above — it clones the repo and
+prompts for the two env vars (paste the values above, or your own Supabase
+project's). To run your own backend instead, see **Deploy** + **Seeding** below.
+
 ---
 
 ## Tech stack
