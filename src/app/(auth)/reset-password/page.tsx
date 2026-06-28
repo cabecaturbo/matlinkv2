@@ -1,11 +1,13 @@
-import { requireUser } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { getSessionUser } from "@/lib/auth";
 import { Card } from "@/components/ui/card";
 import { ResetPasswordForm } from "./reset-password-form";
 
 // Reached via the recovery email link → /auth/confirm establishes a session →
-// redirects here. requireUser sends anyone without that session back to login.
+// redirects here. Only a session is required (not a chosen role).
 export default async function ResetPasswordPage() {
-  await requireUser();
+  const session = await getSessionUser();
+  if (!session) redirect("/login");
 
   return (
     <Card>

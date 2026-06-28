@@ -6,7 +6,14 @@ import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "./database.types";
 
 // Paths that require a signed-in user.
-const PROTECTED_PREFIXES = ["/dashboard", "/admin", "/onboarding", "/profile", "/gym"];
+const PROTECTED_PREFIXES = [
+  "/dashboard",
+  "/admin",
+  "/onboarding",
+  "/profile",
+  "/gym",
+  "/role",
+];
 // Auth pages a signed-in user shouldn't see.
 const AUTH_PATHS = ["/login", "/signup"];
 

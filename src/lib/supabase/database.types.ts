@@ -365,19 +365,19 @@ export type Database = {
           created_at: string
           email: string | null
           id: string
-          role: Database["public"]["Enums"]["user_role"]
+          role: Database["public"]["Enums"]["user_role"] | null
         }
         Insert: {
           created_at?: string
           email?: string | null
           id: string
-          role?: Database["public"]["Enums"]["user_role"]
+          role?: Database["public"]["Enums"]["user_role"] | null
         }
         Update: {
           created_at?: string
           email?: string | null
           id?: string
-          role?: Database["public"]["Enums"]["user_role"]
+          role?: Database["public"]["Enums"]["user_role"] | null
         }
         Relationships: []
       }

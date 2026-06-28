@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import Link from "next/link";
 import { requestPasswordReset, type AuthState } from "../actions";
@@ -24,6 +24,7 @@ export default function ForgotPasswordPage() {
     requestPasswordReset,
     undefined,
   );
+  const [email, setEmail] = useState("");
 
   return (
     <Card>
@@ -49,6 +50,8 @@ export default function ForgotPasswordPage() {
               type="email"
               autoComplete="email"
               placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>

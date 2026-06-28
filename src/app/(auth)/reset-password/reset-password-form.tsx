@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { updatePassword, type AuthState } from "../actions";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ export function ResetPasswordForm() {
     updatePassword,
     undefined,
   );
+  const [password, setPassword] = useState("");
 
   return (
     <form action={formAction} className="mt-6 space-y-4">
@@ -33,6 +34,8 @@ export function ResetPasswordForm() {
           type="password"
           autoComplete="new-password"
           placeholder="At least 8 characters"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           minLength={8}
           required
         />
