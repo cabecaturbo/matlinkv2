@@ -29,8 +29,14 @@ export const COACHING_FOCUS = [
 // Roles/positions a person is open to — beyond coaching, the staff/creative
 // roles a gym hires for.
 export const ROLE_TYPES = [
+  // Coaching
   "Head coach", "Assistant coach", "Private lessons coach", "Kids program coach",
-  "Front desk manager", "Sales", "Marketing", "Social media", "Videographer", "Photographer",
+  // Fitness
+  "Personal trainer", "Strength & conditioning", "Nutritionist",
+  // Operations
+  "Gym manager", "Front desk manager", "Receptionist", "Sales", "Events coordinator",
+  // Creative / marketing
+  "Marketing", "Social media", "Videographer", "Photographer",
 ] as const;
 
 export const AVAILABILITY = [
