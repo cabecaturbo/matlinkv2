@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // Demo dataset — the marketplace you see when MatLink runs without a backend.
 //
-// NOTE ON CONTENT: the three headline athletes are real competitors and the
-// photos are real, but every *account* detail here is invented for the demo —
-// availability, relocation plans, references, WhatsApp numbers and emails are
-// placeholders, not real contact details. Competition results are included to
-// make the profiles feel real; treat them as demo copy and correct them before
-// this is shown anywhere public.
+// NOTE ON CONTENT: the three headline athletes are real competitors. Their
+// names, belts, lineage, teams and competition records were checked against
+// public sources (BJJ Heroes, FloGrappling, Wikipedia) in September 2026, and
+// the "verify independently" links point at those real profiles.
+//
+// What is NOT real, and is invented purely so the marketplace has something to
+// demonstrate: availability, relocation plans, rates, WhatsApp numbers and
+// email addresses. No real person has listed themselves for hire here.
+// References belong only to the invented supporting coaches.
 
 export type DemoRow = Record<string, any>;
 export type DemoStore = Record<string, DemoRow[]>;
@@ -90,19 +93,17 @@ function headliners(): DemoRow[] {
       location_country: "United States",
       location_city: "San Diego",
       belt: "black",
-      belt_degree: 2,
-      years_training: 18,
-      academy: "Atos Jiu-Jitsu",
-      professor: "André Galvão",
-      ibjjf_number: "160244",
-      dob: "1994-06-12",
+      belt_degree: 3,
+      years_training: 20,
+      academy: "Pace Jiu-Jitsu",
+      professor: "André Fabiano",
       photo_url: "/athletes/lucas-barbosa-avatar.jpg",
       cover_url: "/athletes/lucas-barbosa-cover.jpg",
       headline:
-        "World-champion black belt building a competition team that actually wins.",
-      bio: "Known as “Hulk” — a gi and no-gi competitor who has spent his career at the sharp end of the heaviest divisions in the sport.\n\nI have been coaching alongside competing for the last six years: running the competition class, cornering athletes at the majors, and building the strength side of the programme. What I care about is the pipeline — taking a room of hobbyists and blue belts and turning a handful of them into people who medal, without burning out the other ninety percent who just want to train.\n\nOpen to a head coach or competition-team role for a gym that is serious about building something over the next five years.",
+        "“Hulk” — two-time gi World Champion and four-time No-Gi World Champion at black belt.",
+      bio: "Known as “Hulk” for the pressure passing and the throws.\n\nI took my black belt from André Fabiano in 2015 and moved to California the same year to compete full time. Since then: two IBJJF World titles in the gi, four No-Gi World titles including the absolute in 2017, back-to-back Pans, and an ADCC bronze. I have also fought professional MMA.\n\nWhat I want now is a room to build. I coach the way I competed — heavy top pressure, a small number of positions drilled until they hold up under a real opponent. Open to a head coach or competition-team role.",
       highlights:
-        "IBJJF World Champion at black belt.\nADCC World Championship medallist.\nMultiple-time IBJJF Pan and No-Gi World medallist.\nSix years coaching a competition team alongside a full competition schedule.",
+        "2× IBJJF World Champion in the gi (2018, 2021).\n4× IBJJF No-Gi World Champion — weight and absolute in 2017.\n2× IBJJF Pan Champion (2018, 2019).\nIBJJF European Champion, gi and no-gi (2018).\nADCC World Championship bronze medallist (2019).",
       coaching_focus: ["Gi", "No-Gi", "Competition team", "Private lessons"],
       roles: ["Head coach", "Private lessons coach"],
       languages: ["Portuguese", "English"],
@@ -127,18 +128,17 @@ function headliners(): DemoRow[] {
       location_city: "San Diego",
       belt: "black",
       belt_degree: 2,
-      years_training: 16,
-      academy: "Atos Jiu-Jitsu",
+      years_training: 18,
+      academy: "Victory Ultra",
       professor: "André Galvão",
-      ibjjf_number: "170881",
-      dob: "1998-09-02",
+      dob: "1998-01-24",
       photo_url: "/athletes/kaynan-duarte-avatar.jpg",
       cover_url: "/athletes/kaynan-duarte-cover.jpg",
       headline:
-        "ADCC gold medallist. Seminars worldwide, and open to the right head-coach seat.",
-      bio: "I came up through the Atos competition room and have competed at the top of both gi and no-gi since my first year as a black belt.\n\nMy coaching is built on positional pressure and a very small number of systems drilled to the point of boredom. I would rather a team knows four positions completely than forty positions vaguely — that is what holds up when someone is trying to take your head off in the final.\n\nCurrently teaching seminars internationally. Interested in a full-time head coach role in a gym with a real competition culture, or a recurring seminar residency.",
+        "Four-time ADCC World Champion. Double gold in weight and absolute, twice.",
+      bio: "From Pederneiras, São Paulo. I won the ADCC trials as a purple belt, took my brown and black belts standing on the podium at the IBJJF Worlds, and have been competing at the top of the heavyweight division since.\n\nFour ADCC world titles — 2019, 2022 and 2024 — with double gold in weight and absolute in both 2022 and 2024. Two IBJJF World titles in the gi at heavyweight.\n\nI coach positional pressure and a very small number of systems drilled to the point of boredom. I would rather a team knows four positions completely than forty vaguely — that is what holds up in a final. Teaching seminars internationally and open to the right head-coach seat.",
       highlights:
-        "ADCC World Championship gold medallist.\nIBJJF World Champion at black belt.\nIBJJF Pan Championship gold medallist.\nTeaches seminars across North America, Europe and the Middle East.",
+        "4× ADCC World Champion (2019, 2022, 2024).\nDouble gold — weight and absolute — at ADCC 2022 and 2024.\n2× IBJJF World Champion at black belt, heavyweight (2021, 2022).\nADCC Rio trials champion as a purple belt.",
       coaching_focus: ["Gi", "No-Gi", "Competition team"],
       roles: ["Head coach", "Assistant coach"],
       languages: ["Portuguese", "English", "Spanish"],
@@ -160,21 +160,20 @@ function headliners(): DemoRow[] {
       full_name: "Felipe Pena",
       nationality: "Brazil",
       location_country: "Brazil",
-      location_city: "Rio de Janeiro",
+      location_city: "Belo Horizonte",
       belt: "black",
       belt_degree: 3,
-      years_training: 20,
-      academy: "Gracie Barra",
-      professor: "Ricardo Vieira",
-      ibjjf_number: "142907",
-      dob: "1990-11-24",
+      years_training: 24,
+      academy: "Gracie Barra — FP Golden Team",
+      professor: "Marcelo Azevedo",
+      dob: "1991-10-19",
       photo_url: "/athletes/felipe-pena-avatar.jpg",
       cover_url: "/athletes/felipe-pena-cover.jpg",
       headline:
-        "Multiple-time world champion. Looking to head a competition programme abroad.",
-      bio: "“Preguiça.” Twenty years on the mats, most of them chasing the same few titles.\n\nI have taught in Brazil my whole career and I am now looking to take a programme abroad — a gym that wants to build a competition team from the ground up and is willing to give it the five years it actually takes.\n\nI teach the guard I built my career on, and I teach it in a way that works for people who are not professional athletes. Fluent in Portuguese, working English, learning Spanish.",
+        "“Preguiça” — three-time IBJJF World Champion and two-time ADCC World Champion.",
+      bio: "I started at Gracie Barra in Belo Horizonte and I still teach there — the FP Golden Team grew out of a scholarship programme I started for kids who could not pay for training.\n\nThree IBJJF World titles in the gi, No-Gi Worlds weight and absolute in 2015, four straight Abu Dhabi World Pro titles, and two ADCC world titles seven years apart — 2017 and 2024.\n\nI teach the guard I built my career on, and I teach it so it works for people who are not professional athletes. Open to taking a competition programme abroad for a gym willing to give it the years it actually takes.",
       highlights:
-        "Multiple-time IBJJF World Champion at black belt.\nADCC World Championship gold medallist.\nTwo decades competing and coaching at the highest level in Brazil.\nBuilt and cornered competition teams in Rio de Janeiro.",
+        "2× ADCC World Champion (2017, 2024); silver in 2015.\n3× IBJJF World Champion at black belt (2018, 2019, 2021).\nIBJJF No-Gi World Champion — weight and absolute (2015).\n4× AJP Abu Dhabi World Pro Champion (2015–2018).\nFounded the FP Golden Team scholarship programme in Belo Horizonte.",
       coaching_focus: ["Gi", "No-Gi", "Competition team", "Fundamentals"],
       roles: ["Head coach", "Private lessons coach"],
       languages: ["Portuguese", "English"],
@@ -182,7 +181,7 @@ function headliners(): DemoRow[] {
       relocation_regions: ["Europe", "Middle East", "North America"],
       open_to_relocation: true,
       needs_visa: true,
-      affiliations: ["IBJJF", "ADCC", "CBJJ"],
+      affiliations: ["IBJJF", "ADCC", "AJP", "CBJJ"],
       verification_status: "verified",
       verified_at: daysAgo(5),
       rate_note: "Open to a salary plus a share of the competition programme.",
@@ -405,22 +404,28 @@ export function buildStore(): DemoStore {
   const profiles = [...headliners(), ...supportingCast()];
   const P = DEMO_PROFILE_IDS;
 
+  // Verified from public records (BJJ Heroes / FloGrappling / Wikipedia, Sept 2026).
   const results: DemoRow[] = [
-    // Lucas Barbosa
-    r(P.lucas, "IBJJF World Championship", "Black / Meio-Pesado", 2022, "Gold", 0),
-    r(P.lucas, "IBJJF No-Gi World Championship", "Black / Meio-Pesado", 2021, "Gold", 1),
-    r(P.lucas, "ADCC World Championship", "88kg", 2022, "Silver", 2),
-    r(P.lucas, "IBJJF Pan Championship", "Black / Meio-Pesado", 2019, "Gold", 3),
+    // Lucas "Hulk" Barbosa
+    r(P.lucas, "IBJJF World Championship", "Black / Meio-Pesado", 2021, "Gold", 0),
+    r(P.lucas, "IBJJF World Championship", "Black / Meio-Pesado", 2018, "Gold", 1),
+    r(P.lucas, "IBJJF No-Gi World Championship", "Black / Absolute", 2017, "Gold", 2),
+    r(P.lucas, "IBJJF No-Gi World Championship", "Black / Meio-Pesado", 2017, "Gold", 3),
+    r(P.lucas, "IBJJF Pan Championship", "Black / Meio-Pesado", 2019, "Gold", 4),
+    r(P.lucas, "ADCC World Championship", "88kg", 2019, "Bronze", 5),
     // Kaynan Duarte
-    r(P.kaynan, "ADCC World Championship", "99kg", 2022, "Gold", 0),
-    r(P.kaynan, "ADCC World Championship", "88kg", 2019, "Gold", 1),
-    r(P.kaynan, "IBJJF World Championship", "Black / Pesado", 2018, "Gold", 2),
-    r(P.kaynan, "IBJJF Pan Championship", "Black / Pesado", 2019, "Gold", 3),
-    // Felipe Pena
-    r(P.felipe, "ADCC World Championship", "99kg", 2017, "Gold", 0),
-    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2018, "Gold", 1),
-    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2016, "Gold", 2),
-    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2014, "Gold", 3),
+    r(P.kaynan, "ADCC World Championship", "99kg + Absolute", 2024, "Double gold", 0),
+    r(P.kaynan, "ADCC World Championship", "99kg + Absolute", 2022, "Double gold", 1),
+    r(P.kaynan, "ADCC World Championship", "Heavyweight", 2019, "Gold", 2),
+    r(P.kaynan, "IBJJF World Championship", "Black / Pesado", 2022, "Gold", 3),
+    r(P.kaynan, "IBJJF World Championship", "Black / Pesado", 2021, "Gold", 4),
+    // Felipe "Preguiça" Pena
+    r(P.felipe, "ADCC World Championship", "99kg", 2024, "Gold", 0),
+    r(P.felipe, "ADCC World Championship", "99kg", 2017, "Gold", 1),
+    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2021, "Gold", 2),
+    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2019, "Gold", 3),
+    r(P.felipe, "IBJJF World Championship", "Black / Meio-Pesado", 2018, "Gold", 4),
+    r(P.felipe, "IBJJF No-Gi World Championship", "Black / Absolute", 2015, "Gold", 5),
   ];
 
   // One headline result each for the supporting cast.
@@ -439,16 +444,17 @@ export function buildStore(): DemoStore {
     if (p) results.push(r(p.id, comp, div, year, place, 0));
   }
 
+  // Real public profiles — the whole point of the "verify independently" row.
   const links: DemoRow[] = [
-    l(P.lucas, "ibjjf", "https://ibjjf.com/"),
-    l(P.lucas, "flograppling", "https://www.flograppling.com/"),
-    l(P.lucas, "instagram", "https://www.instagram.com/"),
-    l(P.kaynan, "ibjjf", "https://ibjjf.com/"),
-    l(P.kaynan, "bjjheroes", "https://www.bjjheroes.com/"),
-    l(P.kaynan, "instagram", "https://www.instagram.com/"),
-    l(P.felipe, "ibjjf", "https://ibjjf.com/"),
-    l(P.felipe, "bjjheroes", "https://www.bjjheroes.com/"),
-    l(P.felipe, "youtube", "https://www.youtube.com/"),
+    l(P.lucas, "bjjheroes", "https://www.bjjheroes.com/bjj-fighters/lucas-hulk-barbosa"),
+    l(P.lucas, "flograppling", "https://www.flograppling.com/people/5951235-lucas-hulk-barbosa"),
+    l(P.lucas, "other", "https://en.wikipedia.org/wiki/Lucas_Barbosa_(martial_artist)"),
+    l(P.kaynan, "bjjheroes", "https://www.bjjheroes.com/bjj-fighters/kaynan-duarte"),
+    l(P.kaynan, "flograppling", "https://www.flograppling.com/people/6451325-kaynan-duarte"),
+    l(P.kaynan, "other", "https://en.wikipedia.org/wiki/Kaynan_Duarte"),
+    l(P.felipe, "bjjheroes", "https://www.bjjheroes.com/bjj-fighters/felipe-pena-preguica"),
+    l(P.felipe, "flograppling", "https://www.flograppling.com/people/5947288-felipe-pena"),
+    l(P.felipe, "other", "https://en.wikipedia.org/wiki/Felipe_Pena"),
   ];
 
   const idOf = (name: string) =>
@@ -456,13 +462,9 @@ export function buildStore(): DemoStore {
   const mateus = idOf("Mateus Oliveira");
   const sofia = idOf("Sofia Martins");
 
+  // Only the invented coaches carry references: putting words in a real
+  // person's mouth is not something a demo should do.
   const references: DemoRow[] = [
-    ref(P.lucas, "André Galvão", "Head professor, Atos Jiu-Jitsu", "Coached Lucas through his competition career. Happy to speak to any gym considering him."),
-    ref(P.lucas, "Marcus Almeida", "Training partner", "Trained together for six years — one of the most consistent people in the room."),
-    ref(P.kaynan, "André Galvão", "Head professor, Atos Jiu-Jitsu", "Came up through our competition programme from teenager to world champion."),
-    ref(P.felipe, "Ricardo Vieira", "Head professor", "Twenty years of history. Vouches for him without reservation."),
-    ref(P.felipe, "Leandro Costa", "Gym owner, Rio de Janeiro", "Ran our competition class for three seasons — attendance doubled."),
-    // The two profiles awaiting review — an admin needs something to weigh up.
     ref(mateus, "Leo Vieira", "Head professor, Checkmat", "Trained and promoted him. Reliable, and very good with beginners."),
     ref(mateus, "Paula Nunes", "Parent, kids programme", "My two children have trained with him for four years. He is the reason they stayed."),
     ref(sofia, "Rodrigo Cavaca", "Head professor, Icon BJJ", "Sofia has run our beginners programme for two years. Excellent with new starters."),
@@ -473,14 +475,11 @@ export function buildStore(): DemoStore {
     contact: "+55 11 99999-0000 (demo placeholder)",
   }));
 
-  // Docs belong to the profiles in the verification queue (plus one verified
-  // athlete, so an admin can see what an approved file set looked like).
+  // Documents sit with the profiles actually awaiting review.
   const docs: DemoRow[] = [
     doc(mateus, "Black belt certificate", "/demo-docs/belt-certificate.svg"),
     doc(mateus, "Photo ID", "/demo-docs/photo-id.svg"),
     doc(sofia, "Photo ID", "/demo-docs/photo-id.svg"),
-    doc(P.felipe, "Black belt certificate", "/demo-docs/belt-certificate.svg"),
-    doc(P.lucas, "Black belt certificate", "/demo-docs/belt-certificate.svg"),
   ];
 
   const contacts: DemoRow[] = [
