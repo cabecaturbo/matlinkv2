@@ -12,45 +12,46 @@ Mobile-first **PWA** built with Next.js + Supabase. Monochrome, type-led design
 
 ---
 
-## Quick start (try it in 2 minutes)
+## Quick start (no backend, no logins)
 
-Run it against the **already-seeded demo backend** — no Supabase setup needed.
+The app ships with **demo mode on by default**: if no Supabase env vars are
+present it runs off an in-memory dataset, so a fresh clone boots into a fully
+populated marketplace with logins switched off.
 
 ```bash
 git clone https://github.com/cabecaturbo/matlinkv2.git
 cd matlinkv2
 npm install
+npm run dev     # http://localhost:3000
 ```
 
-Create a `.env.local` in the project root:
+That's it — no `.env.local`, no Supabase project, no migrations.
 
-```
-NEXT_PUBLIC_SUPABASE_URL=https://slcmedsufrxnmijzhnlo.supabase.co
-NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable__onteu6UMJTeUJk4vjCCZw_6f8ZHuhV
-```
+A **demo bar** sits at the top of every page. Use it to switch between:
 
-These are *public* browser keys (RLS protects all data). Then:
+| Viewing as | What you see |
+|------------|--------------|
+| **Gym owner** | The marketplace, unlocked WhatsApp contact, the gym profile editor |
+| **Athlete** | Lucas Barbosa's own dashboard and the 6-step profile wizard |
+| **Admin** | Stats, the verification queue, and the single-screen review + approve/reject |
+| **Signed out** | The public view, where contact details are gated |
 
-```bash
-npm run dev    # http://localhost:3000
-```
+**Reset data** in that bar restores the seed dataset after you've clicked around.
+Edits (wizard saves, approvals) persist in memory for the life of the server
+process only.
 
-**Demo logins** (password `Passw0rd!23`) — use these instead of fresh signup
-(new accounts require email confirmation):
+Deploying to Vercel with **no environment variables** gives you exactly this —
+a shareable demo link.
 
-| Role | Email |
-|------|-------|
-| Athlete | `athlete1@matlink.dev` |
-| Gym | `gym1@matlink.dev` |
-| Admin | `admin1@matlink.dev` |
+### Turning demo mode off
 
-Browse the marketplace without signing in; sign in as a gym to reveal WhatsApp
-contact; as the athlete to edit the profile wizard; as admin for the
-verification queue at `/admin`.
+Set the two Supabase env vars (below) and demo mode switches itself off; real
+auth and RLS come back with no code changes. To force it either way, set
+`NEXT_PUBLIC_DEMO_MODE=1` or `=0`.
 
-**Deploy your own:** click **Deploy with Vercel** above — it clones the repo and
-prompts for the two env vars (paste the values above, or your own Supabase
-project's). To run your own backend instead, see **Deploy** + **Seeding** below.
+The demo layer is confined to `src/lib/demo/` plus a handful of `if (DEMO_MODE)`
+branches — it swaps in at the Supabase-client seam, so no page, server action or
+component has a demo-specific code path.
 
 ---
 
@@ -193,6 +194,7 @@ src/
     dashboard, offline, manifest.ts, error.tsx, not-found.tsx
   components/{ui,onboarding,profile,marketplace,admin}
   lib/
+    demo/                        # in-memory dataset + Supabase shim (demo mode)
     supabase/{client,server,middleware,database.types}
     auth.ts profile.ts gym.ts admin.ts email.ts upload.ts utils.ts
     validation/profile.ts  constants/  onboarding/
@@ -200,7 +202,7 @@ src/
 supabase/
   migrations/0001_init_schema.sql  0002_rls.sql  0003_storage.sql
   seed.sql
-public/  sw.js  manifest icons
+public/  sw.js  manifest icons  athletes/  demo-docs/
 ```
 
 ---

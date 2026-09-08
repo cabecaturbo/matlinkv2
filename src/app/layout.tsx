@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ServiceWorkerRegister } from "@/components/service-worker-register";
+import { DemoBar } from "@/components/demo/demo-bar";
+import { DEMO_MODE } from "@/lib/demo/mode";
 
 // Display — confident grotesque for the wordmark, names, section titles.
 const spaceGrotesk = Space_Grotesk({
@@ -51,6 +53,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {DEMO_MODE && <DemoBar />}
         {children}
         <ServiceWorkerRegister />
       </body>

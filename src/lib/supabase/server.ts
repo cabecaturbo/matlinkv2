@@ -1,10 +1,22 @@
 // Server-side Supabase client (Server Components, Route Handlers, Server Actions).
 // Reads/writes the auth session from cookies via @supabase/ssr.
+//
+// In demo mode (no Supabase env configured) this returns an in-memory
+// stand-in instead, so the whole app runs with no backend and no logins.
+// See lib/demo/.
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "./database.types";
+import { DEMO_MODE } from "@/lib/demo/mode";
+import { createDemoClient } from "@/lib/demo/db";
+import { demoUser } from "@/lib/demo/session";
 
-export async function createClient() {
+export async function createClient(): Promise<SupabaseClient<Database>> {
+  if (DEMO_MODE) {
+    return createDemoClient(await demoUser()) as unknown as SupabaseClient<Database>;
+  }
+
   const cookieStore = await cookies();
 
   return createServerClient<Database>(

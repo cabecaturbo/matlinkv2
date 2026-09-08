@@ -1,5 +1,17 @@
 import imageCompression from "browser-image-compression";
 import { createClient } from "@/lib/supabase/client";
+import { DEMO_MODE } from "@/lib/demo/mode";
+
+// Demo mode has no storage bucket, so the processed file becomes a data: URL
+// that renders straight out of the in-memory profile row.
+function toDataUrl(blob: Blob): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
 
 // Client-side compress + center-crop to square, then upload to Supabase Storage.
 // Returns the stored object path. Caller decides public URL vs signed URL.
@@ -42,6 +54,8 @@ export async function uploadAvatar(
   kind: "photo" | "cover",
 ): Promise<string> {
   const processed = await compress(file, kind === "photo");
+  if (DEMO_MODE) return toDataUrl(processed);
+
   const path = `${userId}/${kind}-${Date.now()}.webp`;
   const supabase = createClient();
   const { error } = await supabase.storage
@@ -58,6 +72,8 @@ export async function uploadVerificationDoc(
   // Docs may be images or PDFs; only compress images.
   const isImage = file.type.startsWith("image/");
   const payload = isImage ? await compress(file, false) : file;
+  if (DEMO_MODE) return toDataUrl(payload);
+
   const ext = isImage ? "webp" : file.name.split(".").pop() || "pdf";
   const path = `${userId}/doc-${Date.now()}.${ext}`;
   const supabase = createClient();

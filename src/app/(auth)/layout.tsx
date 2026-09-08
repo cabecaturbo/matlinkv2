@@ -1,11 +1,17 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Wordmark } from "@/components/wordmark";
+import { DEMO_MODE } from "@/lib/demo/mode";
 
 export default function AuthLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Demo mode replaces every auth screen with the "who are you viewing as"
+  // picker — there is nothing to sign in to.
+  if (DEMO_MODE) redirect("/demo");
+
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="flex items-center justify-between px-6 py-5">

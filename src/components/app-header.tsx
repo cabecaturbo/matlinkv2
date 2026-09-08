@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/wordmark";
 import { SignOutButton } from "@/components/sign-out-button";
 import type { Role } from "@/lib/auth";
+import { DEMO_MODE } from "@/lib/demo/mode";
 
 // Header for signed-in surfaces. Admin link only shows for admins.
 export function AppHeader({ role }: { role: Role | null }) {
@@ -17,7 +18,7 @@ export function AppHeader({ role }: { role: Role | null }) {
             Admin
           </Link>
         )}
-        <SignOutButton />
+        {!DEMO_MODE && <SignOutButton />}
       </nav>
     </header>
   );

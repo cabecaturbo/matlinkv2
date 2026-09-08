@@ -1,13 +1,20 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
-import { requireUser } from "@/lib/auth";
+import { requireAthlete } from "@/lib/auth";
 import type { Database } from "@/lib/supabase/database.types";
 
 type AthleteProfile = Database["public"]["Tables"]["athlete_profiles"]["Row"];
 
-/** The current athlete's profile row, creating a draft if none exists. */
+/**
+ * The current athlete's profile row, creating a draft if none exists.
+ *
+ * Guards on `requireAthlete` rather than `requireUser`: a layout's guard and
+ * its page render in parallel, so a gym/admin hitting /onboarding would
+ * otherwise have a stray draft athlete profile inserted before the layout's
+ * redirect won the response.
+ */
 export async function getOrCreateMyProfile() {
-  const { user } = await requireUser();
+  const { user } = await requireAthlete();
   const supabase = await createClient();
 
   const existing = await supabase
