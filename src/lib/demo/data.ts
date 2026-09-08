@@ -462,12 +462,13 @@ export function buildStore(): DemoStore {
   const mateus = idOf("Mateus Oliveira");
   const sofia = idOf("Sofia Martins");
 
-  // Only the invented coaches carry references: putting words in a real
-  // person's mouth is not something a demo should do.
+  // A reference is a person the verification desk phones to check a claim —
+  // not a testimonial. Name, relationship and a contact, nothing else. These
+  // people are invented, like the coaches they vouch for.
   const references: DemoRow[] = [
-    ref(mateus, "Leo Vieira", "Head professor, Checkmat", "Trained and promoted him. Reliable, and very good with beginners."),
-    ref(mateus, "Paula Nunes", "Parent, kids programme", "My two children have trained with him for four years. He is the reason they stayed."),
-    ref(sofia, "Rodrigo Cavaca", "Head professor, Icon BJJ", "Sofia has run our beginners programme for two years. Excellent with new starters."),
+    ref(mateus, "Rafael Nogueira", "Head professor"),
+    ref(mateus, "Paula Nunes", "Parent, kids programme"),
+    ref(sofia, "Carla Mendes", "Head professor"),
   ];
 
   const referenceContacts: DemoRow[] = references.map((x) => ({
@@ -580,7 +581,7 @@ function ref(
   profile_id: string,
   name: string,
   relationship: string,
-  note: string,
+  note: string | null = null,
 ): DemoRow {
   return {
     id: rowId("0c01"),
