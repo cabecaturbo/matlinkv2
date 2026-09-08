@@ -1,17 +1,15 @@
 // Demo mode — lets the whole app run with no Supabase project and no logins.
 //
-// It turns on automatically when there is no Supabase URL configured, so a
-// fresh clone (or a Vercel deploy with zero env vars) boots straight into a
-// fully-populated, browsable product. Set NEXT_PUBLIC_DEMO_MODE=1 to force it
-// on even when Supabase env vars are present.
+// ON BY DEFAULT, and opt-out only. This used to switch itself off whenever a
+// Supabase URL happened to be present, which meant a stray env var left over
+// from a Vercel import silently restored the login walls and emptied the
+// marketplace. Deciding it from a variable nobody set is worse than deciding
+// it from one someone must set on purpose.
 //
-// To go back to the real backend: set the Supabase env vars and leave
-// NEXT_PUBLIC_DEMO_MODE unset (or 0). Nothing else in the app changes —
-// demo mode is a swap at the Supabase-client seam only.
-export const DEMO_MODE =
-  process.env.NEXT_PUBLIC_DEMO_MODE === "1" ||
-  (process.env.NEXT_PUBLIC_DEMO_MODE !== "0" &&
-    !process.env.NEXT_PUBLIC_SUPABASE_URL);
+// To run against the real Supabase backend, set NEXT_PUBLIC_DEMO_MODE=0 and
+// provide the Supabase env vars. Nothing else in the app changes — demo mode
+// is a swap at the Supabase-client seam only.
+export const DEMO_MODE = process.env.NEXT_PUBLIC_DEMO_MODE !== "0";
 
 /** Cookie holding "who am I viewing as" while in demo mode. */
 export const DEMO_ROLE_COOKIE = "matlink_demo_view";

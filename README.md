@@ -14,9 +14,10 @@ Mobile-first **PWA** built with Next.js + Supabase. Monochrome, type-led design
 
 ## Quick start (no backend, no logins)
 
-The app ships with **demo mode on by default**: if no Supabase env vars are
-present it runs off an in-memory dataset, so a fresh clone boots into a fully
-populated marketplace with logins switched off.
+The app ships with **demo mode on by default** — it runs off an in-memory
+dataset, so a fresh clone (or a Vercel deploy) boots into a fully populated
+marketplace with logins switched off. Supabase env vars do not change this;
+demo mode is opt-out only.
 
 ```bash
 git clone https://github.com/cabecaturbo/matlinkv2.git
@@ -45,9 +46,12 @@ a shareable demo link.
 
 ### Turning demo mode off
 
-Set the two Supabase env vars (below) and demo mode switches itself off; real
-auth and RLS come back with no code changes. To force it either way, set
-`NEXT_PUBLIC_DEMO_MODE=1` or `=0`.
+Set **`NEXT_PUBLIC_DEMO_MODE=0`** and provide the Supabase env vars (below).
+Real auth and RLS come back with no code changes.
+
+Demo mode is deliberately opt-out rather than "off whenever Supabase is
+configured" — a leftover env var from a Vercel import should not be able to
+silently restore the login walls.
 
 The demo layer is confined to `src/lib/demo/` plus a handful of `if (DEMO_MODE)`
 branches — it swaps in at the Supabase-client seam, so no page, server action or
